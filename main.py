@@ -71,10 +71,17 @@ import receives_information as ri
 # else:
 #     print("no")
 #     print(no)
-#
+
 df =r"C:\Users\gmth0\OneDrive\Pictures\Screenshots\PlayTennis.csv"
 Ri =ri.receives_information(df)
 df=Ri.get_data_fraim()
 ns= ne.NaiveBayesClassifier(df, "PlayTennis")
 ns.deviding_tow_dic()
-# ns.amounts()
+ns.amounts()
+ns.satiatics()
+
+
+
+
+
+
