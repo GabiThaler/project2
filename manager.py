@@ -1,5 +1,9 @@
 import receives_information
 import NaiveBayesClassifier
+import prediction
+
+
+
 class Maneger:
     def __init__(self):
         self.path =None
@@ -30,37 +34,11 @@ class Maneger:
     #     print("plese enter the informition")
     #     for i in self.satis_dic:
     #         for j in self.satis_dic[i]:
-    #             self.prediction[i]=input("Enter the prediction of {i}: ")
+    #             self.prediction[i]=input(f"Enter the prediction of {i}: ")
     #         break
 
-    def get_user_input(self):
-        print("Please enter the input data:")
-        for col in self.df.columns:
-            if col != self.target_col:
-                val = input(f"Enter value for '{col}': ")
-                # המרה לבוליאני אם צריך
-                if val.lower() == 'true':
-                    val = True
-                elif val.lower() == 'false':
-                    val = False
-                self.prediction[col] = val
-
-    def prediction_caliton(self):
-        for i in self.satis_dic:
-            flag =True
-            for col in self.df.columns:
-                if col != self.target_col:
-                    if flag:
-                        self.prediction_result[i] = self.satis_dic[i][col][self.prediction[col]]
-                        flag=False
-
-                    else:
-                        self.prediction_result[i] *= self.satis_dic[i][col][self.prediction[col]]
-
-        print(self.prediction_result)
-
-    # def final_calcliton(self):
-    #     for i in self.satis_dic:
-    #         for col in self.df.columns:
-    #             if col != self.target_col:
-    #
+    def calecliting_prediction(self):
+        self.pre = prediction.Prediction(self.df, self.target_col, self.nbc.get_new_df(),self.satis_dic)
+        self.pre.get_user_input()
+        self.pre.prediction_caliton()
+        self.pre.final_calculation()

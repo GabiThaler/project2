@@ -72,7 +72,7 @@ me.menu_manager()
 # yes = d_yes['Outlook'][i_outlook] * d_yes['Temperature'][i_temperature] * d_yes['Humidity'][i_humidity] * d_yes['Windy'][i_windy]
 # no = d_no['Outlook'][i_outlook] * d_no['Temperature'][i_temperature] * d_no['Humidity'][i_humidity] * d_no['Windy'][i_windy]
 #
-# yes *=  amount_of_yes/amount_of_rows
+# yes *=  amount_of_ye1s/amount_of_rows
 # no *=  amount_of_no/amount_of_rows
 # if yes > no:
 #     print("yes")
