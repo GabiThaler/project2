@@ -1,8 +1,7 @@
 import  pandas as pd
 
 
-class receives_information:
-    df = pd.DataFrame()
+class Receives_information:
     def __init__(self, dataframe):
         self.df = pd.read_csv(dataframe)
 

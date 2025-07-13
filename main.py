@@ -1,6 +1,15 @@
 import pandas as pd
 import NaiveBayesClassifier as ne
 import receives_information as ri
+import menu
+
+me =menu.Menu()
+me.menu_manager()
+
+
+
+
+
 # # קריאה של הקובץ csv
 # # cs ="r" + input("enter the csv addres ")
 # df = pd.read_csv(r"C:\Users\gmth0\OneDrive\Pictures\Screenshots\PlayTennis.csv")
@@ -71,14 +80,16 @@ import receives_information as ri
 # else:
 #     print("no")
 #     print(no)
+#
+# df =r"C:\Users\gmth0\OneDrive\Pictures\Screenshots\PlayTennis.csv"
+# Ri =ri.receives_information(df)
+# df=Ri.get_data_fraim()
+# ns= ne.NaiveBayesClassifier(df, "PlayTennis")
+# ns.deviding_tow_dic()
+# ns.amounts()
+# ns.satiatics()
+#
 
-df =r"C:\Users\gmth0\OneDrive\Pictures\Screenshots\PlayTennis.csv"
-Ri =ri.receives_information(df)
-df=Ri.get_data_fraim()
-ns= ne.NaiveBayesClassifier(df, "PlayTennis")
-ns.deviding_tow_dic()
-ns.amounts()
-ns.satiatics()
 
 
 

@@ -1,6 +1,6 @@
 import pandas as pd
 
-class NaiveBayesClassifier:
+class NaiveBayesClassifier1:
     # בנאי
     def __init__(self,data,target_col ):
         self.df=data
@@ -26,12 +26,11 @@ class NaiveBayesClassifier:
 
     #יצירת משתנים של כמות השורות של כל מקרה ובכללי כדי לחשב את הסטיסטיקה
     def amounts(self):
-        def amounts(self):
-            amount_of_Options1 = {}
+        amount_of_Options1 = {}
 
-            print(self.satis_dic)
-            for k in self.satis_dic.keys():
-                amount_of_Options1[k] = self.amount_of_Options[k]
+        print(self.satis_dic)
+        for k in self.satis_dic.keys():
+            amount_of_Options1[k] = self.amount_of_Options[k]
 
     # מכניסים למילון של הסטיסטיקה את כל הסטיסטיקות
     def satiatics(self):
@@ -52,3 +51,6 @@ class NaiveBayesClassifier:
                     self.satis_dic[i][col][k] = v / self.amount_of_Options[i]
 
         print(self.satis_dic)
+
+    def get_satis_dic(self):
+        return self.satis_dic
