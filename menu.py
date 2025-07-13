@@ -14,8 +14,8 @@ class Menu:
                     self.me.set_database()
                     self.me.trining_database()
                 case "2":
-                    self.me.get_user_input()
-                    self.me.prediction_caliton()
+                    self.me.calecliting_prediction()
+
                 case "0":
                     flag =False
 

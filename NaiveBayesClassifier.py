@@ -54,3 +54,6 @@ class NaiveBayesClassifier1:
 
     def get_satis_dic(self):
         return self.satis_dic
+
+    def get_new_df(self):
+        return self.new_df
