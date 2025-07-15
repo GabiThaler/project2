@@ -12,7 +12,7 @@ me.menu_manager()
 
 # # קריאה של הקובץ csv
 # # cs ="r" + input("enter the csv addres ")
-# df = pd.read_csv(r"C:\Users\gmth0\OneDrive\Pictures\Screenshots\PlayTennis.csv")
+# df = pd.read_csv(r"1")
 #
 #
 # # יצירת שתי טבלאות חדשות אחד לכן אחד ללא
