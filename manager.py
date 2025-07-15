@@ -29,13 +29,7 @@ class Maneger:
         self.nbc.satiatics()
         self.satis_dic = self.nbc.get_satis_dic()
 
-    #
-    # def geting_theinfrmition(self):
-    #     print("plese enter the informition")
-    #     for i in self.satis_dic:
-    #         for j in self.satis_dic[i]:
-    #             self.prediction[i]=input(f"Enter the prediction of {i}: ")
-    #         break
+
 
     def calecliting_prediction(self):
         self.pre = prediction.Prediction(self.df, self.target_col, self.nbc.get_new_df(),self.satis_dic)

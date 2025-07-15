@@ -20,7 +20,6 @@ class NaiveBayesClassifier1:
             mask = self.df[self.target_col] == k
             filterd =self.df[mask].copy()
             filterd.drop(self.target_col,axis=1,inplace=True)
-            # print(filterd)
             self.new_df[k] = filterd
         print(self.new_df)
 
