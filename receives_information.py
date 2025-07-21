@@ -2,8 +2,17 @@ import  pandas as pd
 
 
 class Receives_information:
+
     def __init__(self, dataframe):
-        self.df = pd.read_csv(dataframe)
+        flag=True
+        while flag:
+            try:
+                self.df = pd.read_csv(dataframe)
+                flag=False
+            except :
+                print("File not found")
+                dataframe=input("enter a valid file path")
+
 
     def get_data_fraim(self):
         return self.df

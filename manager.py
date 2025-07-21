@@ -1,3 +1,5 @@
+from typing_inspection.typing_objects import target
+
 import receives_information
 import NaiveBayesClassifier
 import prediction
@@ -21,6 +23,8 @@ class Maneger:
     def set_database(self):
         self.RI = receives_information.Receives_information(self.path)
         self.df =self.RI.get_data_fraim()
+        while(self.target_col not in self.df):
+            self.target_col = input("Enter the name of a valid target column: ")
 
     def trining_database(self):
         self.nbc = NaiveBayesClassifier.NaiveBayesClassifier1(self.df, self.target_col)
