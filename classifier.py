@@ -1,9 +1,9 @@
 import pandas as pd
 
 
-class Prediction:
-    def __init__(self,df,target_col,new_df,satistic_dic):
-        self.prediction={}
+class Classifier:
+    def __init__(self,df,target_col,new_df,satistic_dic,user_input):
+        self.prediction=user_input
         self.prediction_result={}
         self.df=df
         self.target_col=target_col
@@ -11,18 +11,18 @@ class Prediction:
         self.satis_dic=satistic_dic
 
 
-
-    def get_user_input(self):
-        print("Please enter the input data:")
-        for col in self.df.columns:
-            if col != self.target_col:
-                val = input(f"Enter value for '{col}': ")
-                # המרה לבוליאני אם צריך
-                if val.lower() == 'true':
-                    val = True
-                elif val.lower() == 'false':
-                    val = False
-                self.prediction[col] = val
+    #
+    # def get_user_input(self):
+    #     print("Please enter the input data:")
+    #     for col in self.df.columns:
+    #         if col != self.target_col:
+    #             val = input(f"Enter value for '{col}': ")
+    #             # המרה לבוליאני אם צריך
+    #             if val.lower() == 'true':
+    #                 val = True
+    #             elif val.lower() == 'false':
+    #                 val = False
+    #             self.prediction[col] = val
 
     def prediction_caliton(self):
         for i in self.satis_dic:
