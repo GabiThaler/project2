@@ -11,6 +11,7 @@ class Prediction:
         self.satis_dic=satistic_dic
 
 
+
     def get_user_input(self):
         print("Please enter the input data:")
         for col in self.df.columns:
@@ -25,13 +26,12 @@ class Prediction:
 
     def prediction_caliton(self):
         for i in self.satis_dic:
-            flag =True
             for col in self.df.columns:
+                flag = True
                 if col != self.target_col:
                     if flag:
                         self.prediction_result[i] = self.satis_dic[i][col][self.prediction[col]]
                         flag=False
-
                     else:
                         self.prediction_result[i] *= self.satis_dic[i][col][self.prediction[col]]
 
@@ -45,4 +45,4 @@ class Prediction:
             if v> max:
                 max=v
                 result=k
-        print(f"The most likely outcome {result}")
+        return  f"The most likely outcome {result}"

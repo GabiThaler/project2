@@ -1,4 +1,4 @@
-from typing_inspection.typing_objects import target
+# from typing_inspection.typing_objects import target
 
 import receives_information
 import NaiveBayesClassifier
@@ -16,9 +16,11 @@ class Maneger:
         self.prediction_result={}
 
     def get_input(self):
-        self.path = input("Enter the path of csv file: ")
-        a = fr"{self.path}"
-        self.target_col = input("Enter the name of target column: ")
+        # self.path = input("Enter the path of csv file: ")
+        # a = fr"{self.path}"
+        # self.target_col = input("Enter the name of target column: ")
+        self.path=fr"C:\Users\gmth0\OneDrive\Pictures\Screenshots\PlayTennis.csv"
+        self.target_col="PlayTennis"
 
     def set_database(self):
         self.RI = receives_information.Receives_information(self.path)
@@ -36,7 +38,7 @@ class Maneger:
 
 
     def calecliting_prediction(self):
-        self.pre = prediction.Prediction(self.df, self.target_col, self.nbc.get_new_df(),self.satis_dic)
-        self.pre.get_user_input()
-        self.pre.prediction_caliton()
-        self.pre.final_calculation()
+        self.pr= prediction.Prediction(self.df, self.target_col, self.nbc.get_new_df(),self.satis_dic)
+        self.pr.get_user_input()
+        self.pr.prediction_caliton()
+        self.pr.final_calculation()

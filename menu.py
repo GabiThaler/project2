@@ -9,15 +9,16 @@ class Menu:
             self.vew_menu()
             choice=input()
             match choice:
-                case "1":
-                    self.me.get_input()
-                    self.me.set_database()
-                    self.me.trining_database()
-                case "2":
-                    self.me.calecliting_prediction()
+                    case "1":
+                        self.me.get_input()
+                        self.me.set_database()
+                        self.me.trining_database()
+                    case "2":
+                        self.me.calecliting_prediction()
 
-                case "0":
-                    flag =False
+
+                    case "0":
+                        flag =False
 
 
 
