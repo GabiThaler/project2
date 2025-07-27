@@ -10,22 +10,23 @@ class Maneger:
     def __init__(self):
         self.path =None
         self.df = None
-        self.satis_dic = None
+        self.model = None
         self.prediction={}
         self.prediction_result={}
         self.coles=None
+        self.pr=None
 
-    def get_input(self,path,target="PlayTennis"):
-        a = fr"{path}"
-        self.path = a
-        self.target_col = target
+    def get_input(self, path, target_col):
+        self.path = path
+        self.target_col = target_col
+
 
     def set_database(self):
         RI = Receives_information(self.path)
         self.df =RI.get_data_fraim()
         while(self.target_col not in self.df):
             self.target_col = input("Enter the name of a valid target column: ")
-        self.coles = self.df.columns.tolist()
+
 
 
     def trining_database(self):
@@ -33,12 +34,18 @@ class Maneger:
         self.nbc.deviding_tow_dic()
         self.nbc.amounts()
         self.nbc.satiatics()
-        self.satis_dic = self.nbc.get_satis_dic()
+        self.model = self.nbc.get_satis_dic()
+        self.model["target col"] = self.target_col
+        self.model["colmes"] = self.df.columns.tolist()
+        self.model["amount off aptions"] = self.nbc.get_amount_of_options()
+        self.model["amount off aptions"]["all"] = self.df.shape[1]
+        print(self.model)
+
 
 
 
     def calecliting_prediction(self,user_input):
-        self.pr= Classifier(self.df, self.target_col, self.nbc.get_new_df(),self.satis_dic,user_input)
+        self.pr= Classifier(self.model)
         # self.pr.get_user_input()
-        self.pr.prediction_caliton()
+        self.pr.prediction_caliton(user_input)
         return self.pr.final_calculation()
