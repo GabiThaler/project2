@@ -28,9 +28,14 @@ class Trainer:
 
     #יצירת משתנים של כמות השורות של כל מקרה ובכללי כדי לחשב את הסטיסטיקה
     def amounts(self):
-        print(self.satis_dict)
         for k in self.satis_dict.keys():
             self.amount_of_Options1[k] = self.amount_of_Options[k]
+        self.amount_of_Options1["all"]=0
+        print(f"amount of aptions {self.amount_of_Options1}")
+        for i in self.amount_of_Options1.keys():
+                self.amount_of_Options1["all"] += self.amount_of_Options1[i]
+        self.amount_of_Options1["all"] /=2
+
 
 
 

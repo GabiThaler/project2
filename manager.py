@@ -38,7 +38,7 @@ class Maneger:
         self.model["target col"] = self.target_col
         self.model["colmes"] = self.df.columns.tolist()
         self.model["amount off aptions"] = self.nbc.get_amount_of_options()
-        self.model["amount off aptions"]["all"] = self.df.shape[1]
+
         print(self.model)
 
 
