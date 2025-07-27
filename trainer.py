@@ -5,10 +5,13 @@ class Trainer:
     def __init__(self,data,target_col ):
         self.df=data
         self.target_col=target_col
-        # self.amount_of_columns = self.df.shape[1]
+        self.amount_of_columns = self.df.shape[1]
         self.satis_dict ={}
         self.new_df ={}
         self.amount_of_options =None
+        self.amount_of_Options1 = {}
+
+
     # מחלק את הדאטא בייס למילון עם דאטא בייסים חדשים לפי האפשרויות תוצאה
     def deviding_tow_dic(self):
         self.amount_of_Options = self.df[self.target_col].value_counts()
@@ -25,11 +28,12 @@ class Trainer:
 
     #יצירת משתנים של כמות השורות של כל מקרה ובכללי כדי לחשב את הסטיסטיקה
     def amounts(self):
-        amount_of_Options1 = {}
-
         print(self.satis_dict)
         for k in self.satis_dict.keys():
-            amount_of_Options1[k] = self.amount_of_Options[k]
+            self.amount_of_Options1[k] = self.amount_of_Options[k]
+
+
+
 
     # מכניסים למילון של הסטיסטיקה את כל הסטיסטיקות
     def satiatics(self):
@@ -56,3 +60,6 @@ class Trainer:
 
     def get_new_df(self):
         return self.new_df
+
+    def get_amount_of_options(self):
+        return self.amount_of_Options1

@@ -2,13 +2,38 @@ import pandas as pd
 
 
 class Classifier:
-    def __init__(self,df,target_col,new_df,satistic_dic,user_input):
-        self.prediction=user_input
-        self.prediction_result={}
-        self.df=df
-        self.target_col=target_col
-        self.new_df=new_df
-        self.satis_dic=satistic_dic
+    def __init__(self,model):
+        self.model = model
+        self.prediction_result = {}
+
+
+    def prediction_caliton(self,user_input):
+        for i in self.model:
+            if i not in ["target col", "colmes", "amount off aptions"]:
+                flag = True
+                for col in self.model["colmes"]:
+                    if (not(col == self.model["target col"])):
+                        if flag:
+                            self.prediction_result[i] = self.model[i][col][user_input[col]]
+                            flag=False
+                        else:
+                            self.prediction_result[i] *= self.model[i][col][user_input[col]]
+
+
+                self.prediction_result[i] *= self.model["amount off aptions"][i] / self.model["amount off aptions"]["all"]
+        print(self.prediction_result)
+
+    def final_calculation(self):
+        max =0
+        result =None
+        for k,v in self.prediction_result.items():
+            if v > max:
+                max=v
+                result=k
+        return  f"The most likely outcome {result}"
+
+
+
 
 
     #
@@ -24,25 +49,3 @@ class Classifier:
     #                 val = False
     #             self.prediction[col] = val
 
-    def prediction_caliton(self):
-        for i in self.satis_dic:
-            for col in self.df.columns:
-                flag = True
-                if col != self.target_col:
-                    if flag:
-                        self.prediction_result[i] = self.satis_dic[i][col][self.prediction[col]]
-                        flag=False
-                    else:
-                        self.prediction_result[i] *= self.satis_dic[i][col][self.prediction[col]]
-
-            self.prediction_result[i] *= self.new_df[i].shape[0] / self.df.shape[0]
-        print(self.prediction_result)
-
-    def final_calculation(self):
-        max =0
-        result =None
-        for k,v in self.prediction_result.items():
-            if v> max:
-                max=v
-                result=k
-        return  f"The most likely outcome {result}"
