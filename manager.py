@@ -1,7 +1,7 @@
 from typing_inspection.typing_objects import target
 
 import receives_information
-import NaiveBayesClassifier
+import triner
 import prediction
 
 
@@ -27,16 +27,16 @@ class Maneger:
             self.target_col = input("Enter the name of a valid target column: ")
 
     def trining_database(self):
-        self.nbc = NaiveBayesClassifier.NaiveBayesClassifier1(self.df, self.target_col)
-        self.nbc.deviding_tow_dic()
-        self.nbc.amounts()
-        self.nbc.satiatics()
-        self.satis_dic = self.nbc.get_satis_dic()
+        self.trian_model = triner.Triner(self.df, self.target_col)
+        self.trian_model.deviding_tow_dic()
+        self.trian_model.amounts()
+        self.trian_model.satiatics()
+        self.satis_dic = self.trian_model.get_satis_dic()
 
 
 
     def calecliting_prediction(self):
-        self.pre = prediction.Prediction(self.df, self.target_col, self.nbc.get_new_df(),self.satis_dic)
+        self.pre = prediction.Prediction(self.satis_dic)
         self.pre.get_user_input()
         self.pre.prediction_caliton()
         self.pre.final_calculation()

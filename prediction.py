@@ -2,19 +2,16 @@ import pandas as pd
 
 
 class Prediction:
-    def __init__(self,df,target_col,new_df,satistic_dic):
+    def __init__(self,model):
         self.prediction={}
         self.prediction_result={}
-        self.df=df
-        self.target_col=target_col
-        self.new_df=new_df
-        self.satis_dic=satistic_dic
+        self.model=model
 
 
     def get_user_input(self):
         print("Please enter the input data:")
-        for col in self.df.columns:
-            if col != self.target_col:
+        for col in self.model["col"]:
+            if col != self.model["target_col"]:
                 val = input(f"Enter value for '{col}': ")
                 # המרה לבוליאני אם צריך
                 if val.lower() == 'true':
@@ -24,18 +21,19 @@ class Prediction:
                 self.prediction[col] = val
 
     def prediction_caliton(self):
-        for i in self.satis_dic:
-            flag =True
-            for col in self.df.columns:
-                if col != self.target_col:
-                    if flag:
-                        self.prediction_result[i] = self.satis_dic[i][col][self.prediction[col]]
-                        flag=False
+        for i in self.model:
+            if i not in ["col","target_col","amount_of_col"]:
+                flag =True
+                for col in self.model["col"]:
+                    if col != self.model["target_col"]:
+                        if flag:
+                            self.prediction_result[i] = self.model[i][col][self.prediction[col]]
+                            flag=False
 
-                    else:
-                        self.prediction_result[i] *= self.satis_dic[i][col][self.prediction[col]]
+                        else:
+                            self.prediction_result[i] *= self.model[i][col][self.prediction[col]]
 
-            self.prediction_result[i] *= self.new_df[i].shape[0] / self.df.shape[0]
+                self.prediction_result[i] *= self.model["amount_of_col"][i] / self.model["amount_of_col"]["all"]
         print(self.prediction_result)
 
     def final_calculation(self):
