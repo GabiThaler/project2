@@ -12,6 +12,7 @@ class Triner:
         self.amount_of_options1 = {}
     # מחלק את הדאטא בייס למילון עם דאטא בייסים חדשים לפי האפשרויות תוצאה
     def deviding_tow_dic(self):
+        print(self.df)
         self.amount_of_Options = self.df[self.target_col].value_counts()
         print(self.amount_of_Options)
         for i in self.amount_of_Options.index:
@@ -58,6 +59,14 @@ class Triner:
 
 
         print(self.model)
+
+    def get_features(self):
+        features={}
+        for i in  self.df.columns:
+            features[i] = self.df[i].unique()
+        return features
+
+
 
     def get_satis_dic(self):
         return self.model

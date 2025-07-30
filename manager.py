@@ -1,5 +1,3 @@
-from typing_inspection.typing_objects import target
-
 import receives_information
 import triner
 import prediction
@@ -8,35 +6,35 @@ import prediction
 
 class Maneger:
     def __init__(self):
-        self.path =None
+        self.path = r'C:\Users\gmth0\OneDrive\Pictures\Screenshots\PlayTennis.csv'
         self.df = None
         self.RI =None
-        self.satis_dic = None
+        self.model = None
         self.prediction={}
         self.prediction_result={}
-
-    def get_input(self):
-        self.path = input("Enter the path of csv file: ")
-        a = fr"{self.path}"
-        self.target_col = input("Enter the name of target column: ")
+        self.target_col ="PlayTennis"
+        self.trian_model =None
 
     def set_database(self):
         self.RI = receives_information.Receives_information(self.path)
         self.df =self.RI.get_data_fraim()
-        while(self.target_col not in self.df):
-            self.target_col = input("Enter the name of a valid target column: ")
 
-    def trining_database(self):
+
+    def trining_model(self):
         self.trian_model = triner.Triner(self.df, self.target_col)
         self.trian_model.deviding_tow_dic()
         self.trian_model.amounts()
         self.trian_model.satiatics()
-        self.satis_dic = self.trian_model.get_satis_dic()
+        self.model = self.trian_model.get_satis_dic()
 
 
 
-    def calecliting_prediction(self):
-        self.pre = prediction.Prediction(self.satis_dic)
+    def calecliting_prediction(self, ):
+        self.pre = prediction.Prediction(self.model)
         self.pre.get_user_input()
         self.pre.prediction_caliton()
         self.pre.final_calculation()
+
+
+    def features(self):
+        return self.trian_model.get_features()

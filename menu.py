@@ -10,9 +10,8 @@ class Menu:
             choice=input()
             match choice:
                 case "1":
-                    self.me.get_input()
                     self.me.set_database()
-                    self.me.trining_database()
+                    self.me.trining_model()
                 case "2":
                     self.me.calecliting_prediction()
 
