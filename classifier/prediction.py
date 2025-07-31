@@ -2,23 +2,23 @@ import pandas as pd
 
 
 class Prediction:
-    def __init__(self,model):
-        self.prediction={}
+    def __init__(self,model,user_input):
+        self.prediction=user_input
         self.prediction_result={}
         self.model=model
 
 
-    def get_user_input(self):
-        print("Please enter the input data:")
-        for col in self.model["col"]:
-            if col != self.model["target_col"]:
-                val = input(f"Enter value for '{col}': ")
-                # המרה לבוליאני אם צריך
-                if val.lower() == 'true':
-                    val = True
-                elif val.lower() == 'false':
-                    val = False
-                self.prediction[col] = val
+    # def get_user_input(self):
+    #     print("Please enter the input data:")
+    #     for col in self.model["col"]:
+    #         if col != self.model["target_col"]:
+    #             val = input(f"Enter value for '{col}': ")
+    #             # המרה לבוליאני אם צריך
+    #             if val.lower() == 'true':
+    #                 val = True
+    #             elif val.lower() == 'false':
+    #                 val = False
+    #             self.prediction[col] = val
 
     def prediction_caliton(self):
         for i in self.model:
@@ -43,4 +43,4 @@ class Prediction:
             if v> max:
                 max=v
                 result=k
-        print(f"The most likely outcome {result}")
+        return f"The most likely outcome {result}"

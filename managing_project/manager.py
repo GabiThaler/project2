@@ -1,7 +1,6 @@
-import receives_information
-import triner
-import prediction
-
+from data import receives_information
+from training_model import triner
+from classifier import prediction
 
 
 class Maneger:
@@ -29,11 +28,11 @@ class Maneger:
 
 
 
-    def calecliting_prediction(self, ):
-        self.pre = prediction.Prediction(self.model)
-        self.pre.get_user_input()
+    def calecliting_prediction(self, user_input):
+        self.pre = prediction.Prediction(self.model, user_input)
+        # self.pre.get_user_input()
         self.pre.prediction_caliton()
-        self.pre.final_calculation()
+        return self.pre.final_calculation()
 
 
     def features(self):
